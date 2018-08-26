@@ -1,19 +1,19 @@
 /******************************************************************************
 
-                  °æÈ¨ËùÓÐ (C), 2001-2011, »ªÎª¼¼ÊõÓÐÏÞ¹«Ë¾
+                  ç‰ˆæƒæ‰€æœ‰ (C), 2001-2011, åŽä¸ºæŠ€æœ¯æœ‰é™å…¬å¸
 
  ******************************************************************************
-  ÎÄ ¼þ Ãû   : oal_util.h
-  °æ ±¾ ºÅ   : ³õ¸å
-  ×÷    Õß   : c59720
-  Éú³ÉÈÕÆÚ   : 2012Äê9ÔÂ25ÈÕ
-  ×î½üÐÞ¸Ä   :
-  ¹¦ÄÜÃèÊö   : oal_util_linux.h µÄÍ·ÎÄ¼þ
-  º¯ÊýÁÐ±í   :
-  ÐÞ¸ÄÀúÊ·   :
-  1.ÈÕ    ÆÚ   : 2012Äê9ÔÂ25ÈÕ
-    ×÷    Õß   : c59720
-    ÐÞ¸ÄÄÚÈÝ   : ´´½¨ÎÄ¼þ
+  æ–‡ ä»¶ å   : oal_util.h
+  ç‰ˆ æœ¬ å·   : åˆç¨¿
+  ä½œ    è€…   : c59720
+  ç”Ÿæˆæ—¥æœŸ   : 2012å¹´9æœˆ25æ—¥
+  æœ€è¿‘ä¿®æ”¹   :
+  åŠŸèƒ½æè¿°   : oal_util_linux.h çš„å¤´æ–‡ä»¶
+  å‡½æ•°åˆ—è¡¨   :
+  ä¿®æ”¹åŽ†å²   :
+  1.æ—¥    æœŸ   : 2012å¹´9æœˆ25æ—¥
+    ä½œ    è€…   : c59720
+    ä¿®æ”¹å†…å®¹   : åˆ›å»ºæ–‡ä»¶
 
 ******************************************************************************/
 
@@ -28,7 +28,7 @@ extern "C" {
 
 
 /*****************************************************************************
-  1 ÆäËûÍ·ÎÄ¼þ°üº¬
+  1 å…¶ä»–å¤´æ–‡ä»¶åŒ…å«
 *****************************************************************************/
 /*lint -e322*/
 #include <linux/compiler.h>
@@ -54,9 +54,9 @@ extern "C" {
 /*lint +e322*/
 
 /*****************************************************************************
-  2 ºê¶¨Òå
+  2 å®å®šä¹‰
 *****************************************************************************/
-/* 32×Ö½ÚÐò´óÐ¡¶Ë×ª»» */
+/* 32å­—èŠ‚åºå¤§å°ç«¯è½¬æ¢ */
 #define OAL_SWAP_BYTEORDER_32(_val)        \
         ((((_val) & 0x000000FF) << 24) +     \
         (((_val) & 0x0000FF00) << 8) +       \
@@ -65,14 +65,14 @@ extern "C" {
 
 #define OAL_CONST                                   const
 
-/* »ñÈ¡CORE ID */
+/* èŽ·å–CORE ID */
 #if (_PRE_MULTI_CORE_MODE_OFFLOAD_DMAC == _PRE_MULTI_CORE_MODE)
 #define OAL_GET_CORE_ID()    (0)
-#else                                   /* ·Çoffload¼Ü¹¹ */
+#else                                   /* éžoffloadæž¶æž„ */
 #ifdef _PRE_WLAN_FEATURE_SMP_SUPPORT
 #define OAL_GET_CORE_ID()    smp_processor_id()
 #else
-#define OAL_GET_CORE_ID()    (0)        /* Ö÷Òª¸øE5Æ½Ì¨Ê¹ÓÃ */
+#define OAL_GET_CORE_ID()    (0)        /* ä¸»è¦ç»™E5å¹³å°ä½¿ç”¨ */
 #endif
 #endif
 
@@ -86,16 +86,16 @@ typedef struct file              oal_file_stru;
 #define OAL_FUNC_NAME           __func__
 #define OAL_RET_ADDR            __builtin_return_address(0)
 
-/* ½«¼¸¸ö×Ö·û´®°´ÕÕÖ¸¶¨¸ñÊ½ºÏ³ÉÒ»¸ö×Ö·û´® */
+/* å°†å‡ ä¸ªå­—ç¬¦ä¸²æŒ‰ç…§æŒ‡å®šæ ¼å¼åˆæˆä¸€ä¸ªå­—ç¬¦ä¸² */
 #define OAL_SPRINTF             snprintf
 
-/* ÄÚ´æ¶ÁÆÁÕÏ */
+/* å†…å­˜è¯»å±éšœ */
 #define OAL_RMB()               rmb()
 
-/* ÄÚ´æÐ´ÆÁÕÏ */
+/* å†…å­˜å†™å±éšœ */
 #define OAL_WMB()               wmb()
 
-/* ÄÚ´æÆÁÕÏ */
+/* å†…å­˜å±éšœ */
 #define OAL_MB()                mb()
 
 #define OAL_OFFSET_OF          offsetof
@@ -116,7 +116,7 @@ typedef struct file              oal_file_stru;
 
 #define OAL_VSPRINTF            vsnprintf
 
-/* E5Æ½Ì¨ÃèÊö·ûÓÃ£¬×¢Òâ£¬host²àÆ½Ì¨²»Í¬£¬MEM_BASE_ADDRÐèÒªÐÞ¸Ä */
+/* E5å¹³å°æè¿°ç¬¦ç”¨ï¼Œæ³¨æ„ï¼Œhostä¾§å¹³å°ä¸åŒï¼ŒMEM_BASE_ADDRéœ€è¦ä¿®æ”¹ */
 #if(_PRE_TARGET_PRODUCT_TYPE_E5 == _PRE_CONFIG_TARGET_PRODUCT)
 extern oal_uint32 gul_dscr_fstvirt_addr;
 extern oal_uint32 gul_dscr_fstphy_addr;
@@ -136,7 +136,7 @@ extern oal_uint32 gul_dscr_fstphy_addr;
 #define OAL_DSCR_PHY_TO_VIRT(_phy_addr)     phys_to_virt((_phy_addr) + OAL_PLAT_MEM_BASE_ADDR)
 #endif
 
-/* ÎïÀíµØÖ·ºÍÐéÄâµØÖ·Ö®¼äµÄ×ª»»,×÷ÎªnetbufÓÃ */
+/* ç‰©ç†åœ°å€å’Œè™šæ‹Ÿåœ°å€ä¹‹é—´çš„è½¬æ¢,ä½œä¸ºnetbufç”¨ */
 #define OAL_VIRT_TO_PHY_ADDR(_virt_addr)            (virt_to_phys(_virt_addr) - OAL_PLAT_MEM_BASE_ADDR)
 #define OAL_PHY_TO_VIRT_ADDR(_phy_addr)             phys_to_virt((_phy_addr) + OAL_PLAT_MEM_BASE_ADDR)
 
@@ -167,41 +167,41 @@ typedef struct kobject              oal_kobject;
 /* hi1102-cb for sys interface  51/02 */
 
 /*****************************************************************************
-  3 Ã¶¾Ù¶¨Òå
+  3 æžšä¸¾å®šä¹‰
 *****************************************************************************/
 
 /*****************************************************************************
-  4 È«¾Ö±äÁ¿ÉùÃ÷
-*****************************************************************************/
-
-
-/*****************************************************************************
-  5 ÏûÏ¢Í·¶¨Òå
+  4 å…¨å±€å˜é‡å£°æ˜Ž
 *****************************************************************************/
 
 
 /*****************************************************************************
-  6 ÏûÏ¢¶¨Òå
+  5 æ¶ˆæ¯å¤´å®šä¹‰
 *****************************************************************************/
 
 
 /*****************************************************************************
-  7 STRUCT¶¨Òå
+  6 æ¶ˆæ¯å®šä¹‰
 *****************************************************************************/
 
 
 /*****************************************************************************
-  8 UNION¶¨Òå
+  7 STRUCTå®šä¹‰
 *****************************************************************************/
 
 
 /*****************************************************************************
-  9 OTHERS¶¨Òå
+  8 UNIONå®šä¹‰
 *****************************************************************************/
 
 
 /*****************************************************************************
-  10 º¯ÊýÉùÃ÷
+  9 OTHERSå®šä¹‰
+*****************************************************************************/
+
+
+/*****************************************************************************
+  10 å‡½æ•°å£°æ˜Ž
 *****************************************************************************/
 
 /* #define random_ether_addr(addr) eth_random_addr(addr) */
@@ -212,19 +212,19 @@ static OAL_INLINE void oal_random_ether_addr(oal_uint8 *addr)
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_bit_atomic_test_and_set
- ¹¦ÄÜÃèÊö  : Ô­×ÓµÄ¶ÔÄ³¸öÎ»½øÐÐÖÃ1²Ù×÷£¬²¢·µ»Ø¸ÃÎ»ÖÃµÄ¾ÉÖµ¡£
- ÊäÈë²ÎÊý  : nr: ÐèÒªÉèÖÃµÄÎ»
-             p_addrÐèÒªÖÃÎ»µÄ±äÁ¿µØÖ·
- Êä³ö²ÎÊý  :
- ·µ »Ø Öµ  : ·µ»ØÔ­À´bitÎ»µÄÖµ
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_bit_atomic_test_and_set
+ åŠŸèƒ½æè¿°  : åŽŸå­çš„å¯¹æŸä¸ªä½è¿›è¡Œç½®1æ“ä½œï¼Œå¹¶è¿”å›žè¯¥ä½ç½®çš„æ—§å€¼ã€‚
+ è¾“å…¥å‚æ•°  : nr: éœ€è¦è®¾ç½®çš„ä½
+             p_addréœ€è¦ç½®ä½çš„å˜é‡åœ°å€
+ è¾“å‡ºå‚æ•°  :
+ è¿” å›ž å€¼  : è¿”å›žåŽŸæ¥bitä½çš„å€¼
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2012Äê10ÔÂ11ÈÕ
-    ×÷    Õß   : t00231215
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2012å¹´10æœˆ11æ—¥
+    ä½œ    è€…   : t00231215
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE oal_bitops  oal_bit_atomic_test_and_set(oal_bitops nr, OAL_VOLATILE oal_bitops *p_addr)
@@ -233,19 +233,19 @@ OAL_STATIC OAL_INLINE oal_bitops  oal_bit_atomic_test_and_set(oal_bitops nr, OAL
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_bit_atomic_clear
- ¹¦ÄÜÃèÊö  : ·â×°¸÷¸ö²Ù×÷ÏµÍ³Æ½Ì¨ÏÂ¶ÔÄ³¸öÎ»½øÐÐÔ­×ÓÇå0²Ù×÷¡£
- ÊäÈë²ÎÊý  : nr: ÐèÒªÇåÁãµÄÎ»
-             p_addrÐèÒªÇåÁãµÄ±äÁ¿µØÖ·
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  :
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_bit_atomic_clear
+ åŠŸèƒ½æè¿°  : å°è£…å„ä¸ªæ“ä½œç³»ç»Ÿå¹³å°ä¸‹å¯¹æŸä¸ªä½è¿›è¡ŒåŽŸå­æ¸…0æ“ä½œã€‚
+ è¾“å…¥å‚æ•°  : nr: éœ€è¦æ¸…é›¶çš„ä½
+             p_addréœ€è¦æ¸…é›¶çš„å˜é‡åœ°å€
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  :
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2012Äê10ÔÂ11ÈÕ
-    ×÷    Õß   : t00231215
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2012å¹´10æœˆ11æ—¥
+    ä½œ    è€…   : t00231215
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE oal_void  oal_bit_atomic_clear(oal_bitops nr, OAL_VOLATILE oal_bitops *p_addr)
@@ -254,18 +254,18 @@ OAL_STATIC OAL_INLINE oal_void  oal_bit_atomic_clear(oal_bitops nr, OAL_VOLATILE
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_byteorder_host_to_net_uint16
- ¹¦ÄÜÃèÊö  : ½«16Î»±¾µØ×Ö½ÚÐò×ª»»ÎªÍøÂç×Ö½ÚÐò
- ÊäÈë²ÎÊý  : us_byte: ÐèÒª×Ö½ÚÐò×ª»»µÄ±äÁ¿
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  : ×ª»»ºÃµÄ±äÁ¿
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_byteorder_host_to_net_uint16
+ åŠŸèƒ½æè¿°  : å°†16ä½æœ¬åœ°å­—èŠ‚åºè½¬æ¢ä¸ºç½‘ç»œå­—èŠ‚åº
+ è¾“å…¥å‚æ•°  : us_byte: éœ€è¦å­—èŠ‚åºè½¬æ¢çš„å˜é‡
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  : è½¬æ¢å¥½çš„å˜é‡
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2012Äê11ÔÂ14ÈÕ
-    ×÷    Õß   : t00231215
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2012å¹´11æœˆ14æ—¥
+    ä½œ    è€…   : t00231215
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE __attribute_const__ oal_uint16  oal_byteorder_host_to_net_uint16(oal_uint16 us_byte)
@@ -274,18 +274,18 @@ OAL_STATIC OAL_INLINE __attribute_const__ oal_uint16  oal_byteorder_host_to_net_
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_byteorder_host_to_net_uint16
- ¹¦ÄÜÃèÊö  : ½«16Î»±¾µØ×Ö½ÚÐò×ª»»ÎªÍøÂç×Ö½ÚÐò
- ÊäÈë²ÎÊý  : us_byte: ÐèÒª×Ö½ÚÐò×ª»»µÄ±äÁ¿
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  : ×ª»»ºÃµÄ±äÁ¿
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_byteorder_host_to_net_uint16
+ åŠŸèƒ½æè¿°  : å°†16ä½æœ¬åœ°å­—èŠ‚åºè½¬æ¢ä¸ºç½‘ç»œå­—èŠ‚åº
+ è¾“å…¥å‚æ•°  : us_byte: éœ€è¦å­—èŠ‚åºè½¬æ¢çš„å˜é‡
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  : è½¬æ¢å¥½çš„å˜é‡
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2012Äê11ÔÂ14ÈÕ
-    ×÷    Õß   : t00231215
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2012å¹´11æœˆ14æ—¥
+    ä½œ    è€…   : t00231215
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE __attribute_const__ oal_uint16  oal_byteorder_net_to_host_uint16(oal_uint16 us_byte)
@@ -294,18 +294,18 @@ OAL_STATIC OAL_INLINE __attribute_const__ oal_uint16  oal_byteorder_net_to_host_
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_byteorder_host_to_net_uint16
- ¹¦ÄÜÃèÊö  : ½«32Î»±¾µØ×Ö½ÚÐò×ª»»ÎªÍøÂç×Ö½ÚÐò
- ÊäÈë²ÎÊý  : us_byte: ÐèÒª×Ö½ÚÐò×ª»»µÄ±äÁ¿
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  : ×ª»»ºÃµÄ±äÁ¿
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_byteorder_host_to_net_uint16
+ åŠŸèƒ½æè¿°  : å°†32ä½æœ¬åœ°å­—èŠ‚åºè½¬æ¢ä¸ºç½‘ç»œå­—èŠ‚åº
+ è¾“å…¥å‚æ•°  : us_byte: éœ€è¦å­—èŠ‚åºè½¬æ¢çš„å˜é‡
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  : è½¬æ¢å¥½çš„å˜é‡
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2012Äê11ÔÂ14ÈÕ
-    ×÷    Õß   : t00231215
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2012å¹´11æœˆ14æ—¥
+    ä½œ    è€…   : t00231215
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE __attribute_const__ oal_uint32  oal_byteorder_host_to_net_uint32(oal_uint32 ul_byte)
@@ -314,18 +314,18 @@ OAL_STATIC OAL_INLINE __attribute_const__ oal_uint32  oal_byteorder_host_to_net_
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_byteorder_host_to_net_uint16
- ¹¦ÄÜÃèÊö  : ½«32Î»±¾µØ×Ö½ÚÐò×ª»»ÎªÍøÂç×Ö½ÚÐò
- ÊäÈë²ÎÊý  : us_byte: ÐèÒª×Ö½ÚÐò×ª»»µÄ±äÁ¿
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  : ×ª»»ºÃµÄ±äÁ¿
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_byteorder_host_to_net_uint16
+ åŠŸèƒ½æè¿°  : å°†32ä½æœ¬åœ°å­—èŠ‚åºè½¬æ¢ä¸ºç½‘ç»œå­—èŠ‚åº
+ è¾“å…¥å‚æ•°  : us_byte: éœ€è¦å­—èŠ‚åºè½¬æ¢çš„å˜é‡
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  : è½¬æ¢å¥½çš„å˜é‡
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2012Äê11ÔÂ14ÈÕ
-    ×÷    Õß   : t00231215
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2012å¹´11æœˆ14æ—¥
+    ä½œ    è€…   : t00231215
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE __attribute_const__ oal_uint32  oal_byteorder_net_to_host_uint32(oal_uint32 ul_byte)
@@ -334,18 +334,18 @@ OAL_STATIC OAL_INLINE __attribute_const__ oal_uint32  oal_byteorder_net_to_host_
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_file_open_rw
- ¹¦ÄÜÃèÊö  : ´ò¿ªÎÄ¼þ£¬·½Ê½rw£¬Ã»ÓÐÔò´´½¨
- ÊäÈë²ÎÊý  : pc_path: ÎÄ¼þÂ·¾¶
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  : ÎÄ¼þ¾ä±ú
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_file_open_rw
+ åŠŸèƒ½æè¿°  : æ‰“å¼€æ–‡ä»¶ï¼Œæ–¹å¼rwï¼Œæ²¡æœ‰åˆ™åˆ›å»º
+ è¾“å…¥å‚æ•°  : pc_path: æ–‡ä»¶è·¯å¾„
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  : æ–‡ä»¶å¥æŸ„
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2012Äê11ÔÂ14ÈÕ
-    ×÷    Õß   : t00231215
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2012å¹´11æœˆ14æ—¥
+    ä½œ    è€…   : t00231215
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE oal_file_stru* oal_file_open_rw(const oal_int8 *pc_path)
@@ -362,18 +362,18 @@ OAL_STATIC OAL_INLINE oal_file_stru* oal_file_open_rw(const oal_int8 *pc_path)
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_file_open_append
- ¹¦ÄÜÃèÊö  : ´ò¿ªÎÄ¼þ,·½Ê½append£¬Ã»ÓÐÔò´´½¨
- ÊäÈë²ÎÊý  : pc_path: ÎÄ¼þÂ·¾¶
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  : ÎÄ¼þ¾ä±ú
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_file_open_append
+ åŠŸèƒ½æè¿°  : æ‰“å¼€æ–‡ä»¶,æ–¹å¼appendï¼Œæ²¡æœ‰åˆ™åˆ›å»º
+ è¾“å…¥å‚æ•°  : pc_path: æ–‡ä»¶è·¯å¾„
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  : æ–‡ä»¶å¥æŸ„
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2012Äê11ÔÂ14ÈÕ
-    ×÷    Õß   : t00231215
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2012å¹´11æœˆ14æ—¥
+    ä½œ    è€…   : t00231215
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE oal_file_stru* oal_file_open_append(const oal_int8 *pc_path)
@@ -390,18 +390,18 @@ OAL_STATIC OAL_INLINE oal_file_stru* oal_file_open_append(const oal_int8 *pc_pat
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_file_open_rw
- ¹¦ÄÜÃèÊö  : ´ò¿ªÎÄ¼þ£¬·½Ê½Ö»¶Á
- ÊäÈë²ÎÊý  : pc_path: ÎÄ¼þÂ·¾¶
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  : ÎÄ¼þ¾ä±ú
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_file_open_rw
+ åŠŸèƒ½æè¿°  : æ‰“å¼€æ–‡ä»¶ï¼Œæ–¹å¼åªè¯»
+ è¾“å…¥å‚æ•°  : pc_path: æ–‡ä»¶è·¯å¾„
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  : æ–‡ä»¶å¥æŸ„
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2012Äê11ÔÂ14ÈÕ
-    ×÷    Õß   : t00231215
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2012å¹´11æœˆ14æ—¥
+    ä½œ    è€…   : t00231215
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE oal_file_stru* oal_file_open_readonly(const oal_int8 *pc_path)
@@ -418,20 +418,20 @@ OAL_STATIC OAL_INLINE oal_file_stru* oal_file_open_readonly(const oal_int8 *pc_p
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_file_write
- ¹¦ÄÜÃèÊö  : Ð´ÎÄ¼þ
- ÊäÈë²ÎÊý  : file: ÎÄ¼þ¾ä±ú
-           : pc_string: ÊäÈëÄÚÈÝµØÖ·
-           : ul_length: ÊäÈëÄÚÈÝ³¤¶È
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  : ÎÄ¼þ¾ä±ú
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_file_write
+ åŠŸèƒ½æè¿°  : å†™æ–‡ä»¶
+ è¾“å…¥å‚æ•°  : file: æ–‡ä»¶å¥æŸ„
+           : pc_string: è¾“å…¥å†…å®¹åœ°å€
+           : ul_length: è¾“å…¥å†…å®¹é•¿åº¦
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  : æ–‡ä»¶å¥æŸ„
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2012Äê11ÔÂ14ÈÕ
-    ×÷    Õß   : t00231215
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2012å¹´11æœˆ14æ—¥
+    ä½œ    è€…   : t00231215
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE oal_file_stru* oal_file_write(oal_file_stru *file, oal_int8 *pc_string, oal_uint32 ul_length)
@@ -440,22 +440,22 @@ OAL_STATIC OAL_INLINE oal_file_stru* oal_file_write(oal_file_stru *file, oal_int
 
     i_ret = file->f_op->write(file, pc_string, ul_length, &file->f_pos);
 
-    return OAL_SUCC;
+    return "OAL_SUCC";
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_file_close
- ¹¦ÄÜÃèÊö  : ¹Ø±ÕÎÄ¼þ
- ÊäÈë²ÎÊý  : pc_path: ÎÄ¼þÂ·¾¶
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  : ÎÄ¼þ¾ä±ú
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_file_close
+ åŠŸèƒ½æè¿°  : å…³é—­æ–‡ä»¶
+ è¾“å…¥å‚æ•°  : pc_path: æ–‡ä»¶è·¯å¾„
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  : æ–‡ä»¶å¥æŸ„
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2012Äê11ÔÂ14ÈÕ
-    ×÷    Õß   : t00231215
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2012å¹´11æœˆ14æ—¥
+    ä½œ    è€…   : t00231215
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE oal_int32 oal_file_close(oal_file_stru *file)
@@ -464,7 +464,7 @@ OAL_STATIC OAL_INLINE oal_int32 oal_file_close(oal_file_stru *file)
     ret = filp_close(file, 0);
     if (0 == ret)
     {
-        return OAL_SUCC;
+        return "OAL_SUCC";
     }
     else
     {
@@ -473,20 +473,20 @@ OAL_STATIC OAL_INLINE oal_int32 oal_file_close(oal_file_stru *file)
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_file_read
- ¹¦ÄÜÃèÊö  : ÄÚºË¶ÁÎÄ¼þ£¬´ÓÍ·¿ªÊ¼¶Á
- ÊäÈë²ÎÊý  : file:Ö¸ÏòÒª¶ÁÈ¡µÄÎÄ¼þµÄÖ¸Õë
-             puc_buf:´ÓÎÄ¼þ¶Á³öÊý¾Ýºó´æ·ÅµÄbuf
-             ul_count:Ö¸¶¨Òª¶ÁÈ¡µÄ³¤¶È
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  :
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_file_read
+ åŠŸèƒ½æè¿°  : å†…æ ¸è¯»æ–‡ä»¶ï¼Œä»Žå¤´å¼€å§‹è¯»
+ è¾“å…¥å‚æ•°  : file:æŒ‡å‘è¦è¯»å–çš„æ–‡ä»¶çš„æŒ‡é’ˆ
+             puc_buf:ä»Žæ–‡ä»¶è¯»å‡ºæ•°æ®åŽå­˜æ”¾çš„buf
+             ul_count:æŒ‡å®šè¦è¯»å–çš„é•¿åº¦
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  :
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2014Äê4ÔÂ10ÈÕ
-    ×÷    Õß   : z00237171
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2014å¹´4æœˆ10æ—¥
+    ä½œ    è€…   : z00237171
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE oal_int32  oal_file_read(oal_file_stru *file,
@@ -497,18 +497,18 @@ OAL_STATIC OAL_INLINE oal_int32  oal_file_read(oal_file_stru *file,
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_file_size
- ¹¦ÄÜÃèÊö  : »ñÈ¡ÎÄ¼þ´óÐ¡
- ÊäÈë²ÎÊý  : ÎÞ
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  :
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_file_size
+ åŠŸèƒ½æè¿°  : èŽ·å–æ–‡ä»¶å¤§å°
+ è¾“å…¥å‚æ•°  : æ— 
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  :
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2014Äê4ÔÂ11ÈÕ
-    ×÷    Õß   : z00237171
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2014å¹´4æœˆ11æ—¥
+    ä½œ    è€…   : z00237171
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE oal_int32  oal_file_size(oal_uint32   *pul_file_size)
@@ -529,18 +529,18 @@ OAL_STATIC OAL_INLINE oal_int32  oal_file_size(oal_uint32   *pul_file_size)
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_atoi
- ¹¦ÄÜÃèÊö  : ×Ö·û´®ÀàÐÍ×ª»»³ÉÕûÐÎ
- ÊäÈë²ÎÊý  : c_string: ×Ö·û´®µØÖ·
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  :
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_atoi
+ åŠŸèƒ½æè¿°  : å­—ç¬¦ä¸²ç±»åž‹è½¬æ¢æˆæ•´å½¢
+ è¾“å…¥å‚æ•°  : c_string: å­—ç¬¦ä¸²åœ°å€
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  :
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2012Äê10ÔÂ11ÈÕ
-    ×÷    Õß   : t00231215
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2012å¹´10æœˆ11æ—¥
+    ä½œ    è€…   : t00231215
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE oal_int32  oal_atoi(const oal_int8 *c_string)
@@ -571,20 +571,20 @@ OAL_STATIC OAL_INLINE oal_int32  oal_atoi(const oal_int8 *c_string)
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_itoa
- ¹¦ÄÜÃèÊö  : ÕûÐÎ×ª×Ö·û´®
- ÊäÈë²ÎÊý  : oal_int32 l_val
+ å‡½ æ•° å  : oal_itoa
+ åŠŸèƒ½æè¿°  : æ•´å½¢è½¬å­—ç¬¦ä¸²
+ è¾“å…¥å‚æ•°  : oal_int32 l_val
              oal_int8 *c_string
              oal_uint8 uc_strlen
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  : OAL_STATIC OAL_INLINE oal_void
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  : OAL_STATIC OAL_INLINE oal_void
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2013Äê12ÔÂ28ÈÕ,ÐÇÆÚÁù
-    ×÷    Õß   : y00201072
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2013å¹´12æœˆ28æ—¥,æ˜ŸæœŸå…­
+    ä½œ    è€…   : y00201072
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE oal_void  oal_itoa(oal_int32 l_val, oal_int8 *c_string, oal_uint8 uc_strlen)
@@ -593,18 +593,18 @@ OAL_STATIC OAL_INLINE oal_void  oal_itoa(oal_int32 l_val, oal_int8 *c_string, oa
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_strtok
- ¹¦ÄÜÃèÊö  :
- ÊäÈë²ÎÊý  : ÎÞ
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  :
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_strtok
+ åŠŸèƒ½æè¿°  :
+ è¾“å…¥å‚æ•°  : æ— 
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  :
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2013Äê6ÔÂ4ÈÕ
-    ×÷    Õß   : mayuan
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2013å¹´6æœˆ4æ—¥
+    ä½œ    è€…   : mayuan
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE oal_int8 *oal_strtok(oal_int8 *pc_token, OAL_CONST oal_int8 *pc_delemit, oal_int8 **ppc_context)
@@ -727,23 +727,23 @@ OAL_STATIC OAL_INLINE unsigned long long oal_simple_strtoull(const oal_int8 *cp,
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_strtol
- ¹¦ÄÜÃèÊö  :
- ÊäÈë²ÎÊý  : ÎÞ
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  :
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_strtol
+ åŠŸèƒ½æè¿°  :
+ è¾“å…¥å‚æ•°  : æ— 
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  :
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2013Äê6ÔÂ3ÈÕ
-    ×÷    Õß   : mayuan
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2013å¹´6æœˆ3æ—¥
+    ä½œ    è€…   : mayuan
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE oal_int  oal_strtol(OAL_CONST oal_int8 *pc_nptr, oal_int8 **ppc_endptr, oal_int32 l_base)
 {
-    /* Ìø¹ý¿Õ¸ñ */
+    /* è·³è¿‡ç©ºæ ¼ */
     while (' ' == (*pc_nptr))
     {
         pc_nptr++;
@@ -756,18 +756,18 @@ OAL_STATIC OAL_INLINE oal_int  oal_strtol(OAL_CONST oal_int8 *pc_nptr, oal_int8 
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_udelay
- ¹¦ÄÜÃèÊö  : Î¢Ãë¼¶ÑÓ³Ùº¯Êý
- ÊäÈë²ÎÊý  : ÎÞ
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  :
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_udelay
+ åŠŸèƒ½æè¿°  : å¾®ç§’çº§å»¶è¿Ÿå‡½æ•°
+ è¾“å…¥å‚æ•°  : æ— 
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  :
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2013Äê6ÔÂ8ÈÕ
-    ×÷    Õß   : mayuan
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2013å¹´6æœˆ8æ—¥
+    ä½œ    è€…   : mayuan
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE oal_void  oal_udelay(oal_uint u_loops)
@@ -776,18 +776,18 @@ OAL_STATIC OAL_INLINE oal_void  oal_udelay(oal_uint u_loops)
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_mdelay
- ¹¦ÄÜÃèÊö  : ºÁÃë¼¶ÑÓ³Ùº¯Êý
- ÊäÈë²ÎÊý  : ÎÞ
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  :
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_mdelay
+ åŠŸèƒ½æè¿°  : æ¯«ç§’çº§å»¶è¿Ÿå‡½æ•°
+ è¾“å…¥å‚æ•°  : æ— 
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  :
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2015Äê10ÔÂ6ÈÕ
-    ×÷    Õß   : daihu
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2015å¹´10æœˆ6æ—¥
+    ä½œ    è€…   : daihu
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE oal_void  oal_mdelay(oal_uint u_loops)
@@ -796,18 +796,18 @@ OAL_STATIC OAL_INLINE oal_void  oal_mdelay(oal_uint u_loops)
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_kallsyms_lookup_name
- ¹¦ÄÜÃèÊö  : ¸ù¾ÝÈ«¾Ö±äÁ¿Ãû×Ö²éÕÒÈ«¾Ö±äÁ¿µØÖ·
- ÊäÈë²ÎÊý  : ÎÞ
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  : ·µ»Ø0£¬´ú±íÎ´ÕÒµ½
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_kallsyms_lookup_name
+ åŠŸèƒ½æè¿°  : æ ¹æ®å…¨å±€å˜é‡åå­—æŸ¥æ‰¾å…¨å±€å˜é‡åœ°å€
+ è¾“å…¥å‚æ•°  : æ— 
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  : è¿”å›ž0ï¼Œä»£è¡¨æœªæ‰¾åˆ°
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2013Äê8ÔÂ26ÈÕ
-    ×÷    Õß   : huxiaotong
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2013å¹´8æœˆ26æ—¥
+    ä½œ    è€…   : huxiaotong
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE oal_uint32  oal_kallsyms_lookup_name(OAL_CONST oal_uint8 *uc_var_name)
@@ -817,41 +817,41 @@ OAL_STATIC OAL_INLINE oal_uint32  oal_kallsyms_lookup_name(OAL_CONST oal_uint8 *
 
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_dump_stack
- ¹¦ÄÜÃèÊö  : ´òÓ¡º¯Êýµ÷ÓÃÕ»
- ÊäÈë²ÎÊý  : ÎÞ
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  :
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_dump_stack
+ åŠŸèƒ½æè¿°  : æ‰“å°å‡½æ•°è°ƒç”¨æ ˆ
+ è¾“å…¥å‚æ•°  : æ— 
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  :
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2013Äê12ÔÂ3ÈÕ
-    ×÷    Õß   : zhangheng
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2013å¹´12æœˆ3æ—¥
+    ä½œ    è€…   : zhangheng
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE oal_void oal_dump_stack(oal_void)
 {
 #if(_PRE_CONFIG_TARGET_PRODUCT != _PRE_TARGET_PRODUCT_TYPE_WS835DMB)
-    //835²úÆ·µ÷ÓÃdump_stack»á´¥·¢ÏµÍ³ÖØÆô
+    //835äº§å“è°ƒç”¨dump_stackä¼šè§¦å‘ç³»ç»Ÿé‡å¯
     dump_stack();
 #endif
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_msleep
- ¹¦ÄÜÃèÊö  :
- ÊäÈë²ÎÊý  : ÎÞ
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  :
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_msleep
+ åŠŸèƒ½æè¿°  :
+ è¾“å…¥å‚æ•°  : æ— 
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  :
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2013Äê10ÔÂ28ÈÕ
-    ×÷    Õß   : mayuan
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2013å¹´10æœˆ28æ—¥
+    ä½œ    è€…   : mayuan
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE oal_void  oal_msleep(oal_uint32 ul_usecs)
@@ -860,18 +860,18 @@ OAL_STATIC OAL_INLINE oal_void  oal_msleep(oal_uint32 ul_usecs)
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_strncpy
- ¹¦ÄÜÃèÊö  :
- ÊäÈë²ÎÊý  : ÎÞ
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  :
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_strncpy
+ åŠŸèƒ½æè¿°  :
+ è¾“å…¥å‚æ•°  : æ— 
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  :
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   : 2014Äê8ÔÂ30ÈÕ
-    ×÷    Õß   : mayuan
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   : 2014å¹´8æœˆ30æ—¥
+    ä½œ    è€…   : mayuan
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE oal_int8 *oal_strncpy(oal_int8 *pc_dest, OAL_CONST oal_int8 *pc_src, oal_uint32 ul_len)
@@ -880,18 +880,18 @@ OAL_STATIC OAL_INLINE oal_int8 *oal_strncpy(oal_int8 *pc_dest, OAL_CONST oal_int
 }
 
 /*****************************************************************************
- º¯ Êý Ãû  : oal_print_hex_dump
- ¹¦ÄÜÃèÊö  :
- ÊäÈë²ÎÊý  : ÎÞ
- Êä³ö²ÎÊý  : ÎÞ
- ·µ »Ø Öµ  :
- µ÷ÓÃº¯Êý  :
- ±»µ÷º¯Êý  :
+ å‡½ æ•° å  : oal_print_hex_dump
+ åŠŸèƒ½æè¿°  :
+ è¾“å…¥å‚æ•°  : æ— 
+ è¾“å‡ºå‚æ•°  : æ— 
+ è¿” å›ž å€¼  :
+ è°ƒç”¨å‡½æ•°  :
+ è¢«è°ƒå‡½æ•°  :
 
- ÐÞ¸ÄÀúÊ·      :
-  1.ÈÕ    ÆÚ   :
-    ×÷    Õß   :
-    ÐÞ¸ÄÄÚÈÝ   : ÐÂÉú³Éº¯Êý
+ ä¿®æ”¹åŽ†å²      :
+  1.æ—¥    æœŸ   :
+    ä½œ    è€…   :
+    ä¿®æ”¹å†…å®¹   : æ–°ç”Ÿæˆå‡½æ•°
 
 *****************************************************************************/
 OAL_STATIC OAL_INLINE oal_void oal_print_hex_dump(oal_uint8*addr, oal_int32 len, oal_int32 groupsize,oal_int8* pre_str)
